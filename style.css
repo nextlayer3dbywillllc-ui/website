@@ -292,7 +292,7 @@ input[type="email"], input[type="text"] {
 }
 
 .nav-logo {
-    height: 35px; /* Restricts height to fit perfectly in the nav bar */
+    height: 105px; /* Restricts height to fit perfectly in the nav bar */
     width: auto; /* Automatically balances width to prevent stretching */
     object-fit: contain;
     border-radius: 4px; /* Optional: gives sharp logos smooth rounded corners */
