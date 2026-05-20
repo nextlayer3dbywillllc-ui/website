@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. FIXED FLOATING NAVIGATION BAR
+   1. FIXED FLOATING NAVIGATION BAR WITH FLEX ENHANCEMENT
    ========================================================================== */
 .navbar {
     position: fixed;
@@ -11,15 +11,15 @@
     padding: 10px 30px !important;
     z-index: 1000 !important;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
-    display: flex !important;
+    display: flex !important; /* Converts navbar into a flex grid container */
     align-items: center !important;
 }
 
 .nav-container {
     display: flex !important;
-    justify-content: space-between !important; /* Forces layout split priority override */
+    justify-content: space-between !important; /* Forces layout items completely to left & right margins */
     align-items: center !important;
-    width: 100% !important; /* Strips any default width restriction boxes */
+    width: 100% !important;
     max-width: 1400px !important;
     margin: 0 auto !important;
     position: relative !important;
@@ -40,7 +40,7 @@
     background: #ffc107 !important;
     color: #222 !important;
     width: auto !important;
-    padding: 10px 20px !important;
+    padding: 10px 25px !important; /* Enhanced horizontal tap padding cushion */
     border-radius: 50px !important;
     transition: all 0.2s ease;
 }
@@ -51,9 +51,9 @@
     }
 
 .cart-dropdown-box {
-    display: none; /* Keeps container element entirely hidden by default rules */
+    display: none;
     position: absolute;
-    top: 155px; /* Shifted down to clear space below your full 140px branding icon */
+    top: 155px; /* Shifted down cleanly below your full 140px logo space */
     right: 0;
     width: 360px;
     background: white;
@@ -66,7 +66,6 @@
     box-sizing: border-box;
 }
 
-/* Class toggled on/off natively using the Javascript function rules */
 .show-dropdown {
     display: block !important;
 }
@@ -84,7 +83,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 190px 0 40px 0; /* Clear room boundary to let your full 140px logo breathe safely */
+    padding: 190px 0 40px 0 !important; /* Shifts product grid cleanly out from under your 140px logo block */
     background: #f9f9f9;
     color: #333;
 }
@@ -239,60 +238,58 @@ input[type="email"], input[type="text"] {
     }
 
 /* ==========================================================================
-   6. RESPONSIVE PHONE VIEW OPTIMIZATIONS
+   6. RESPONSIVE PHONE VIEW OPTIMIZATIONS WITH SAFE EXTRA PADDING OVERRIDES
    ========================================================================== */
 @media (max-width: 768px) {
     body {
-        padding-top: 120px; /* Reduces page cushion padding space only on mobile */
+        padding-top: 100px !important; /* Fits scaled-down mobile bar tracking */
     }
 
     .navbar {
-        padding: 8px 12px;
+        padding: 5px 15px !important;
     }
 
     .page-main-container {
-        padding: 0 15px;
+        padding: 0 15px !important;
     }
 
     .products {
-        grid-template-columns: repeat(1, 1fr); /* 1 column grid layout on phone devices */
+        grid-template-columns: repeat(1, 1fr) !important; /* Stacks layout cleanly on iPhones */
     }
 
-    /* PREVENTS DROPDOWN CARD BLEEDING ACROSS MOBILE VIEWPORTS EDGE DISPLAY BOUNDS */
     .cart-dropdown-box {
-        width: 290px;
-        max-width: calc(100vw - 24px);
-        top: 75px; /* Shakes dropdown box position block higher up dynamically */
-        right: 0px;
-        padding: 15px;
+        width: 290px !important;
+        max-width: calc(100vw - 24px) !important;
+        top: 75px !important; /* Adjusts popup dropdown alignment placement dynamically higher up */
+        right: 0px !important;
+        padding: 15px !important;
     }
 
     .logo-text {
-        font-size: 0.75rem; /* Prevents button collision wraps */
-        letter-spacing: 0px;
+        font-size: 0.75rem !important; /* Extra padding margin room protection constraint layout */
+        letter-spacing: 0px !important;
     }
 }
 
 /* ==========================================================================
-   7. LOGO BRANDING STYLES
+   7. LOGO BRANDING STYLES WITH FIXED CONTAINER UNLOCKS
    ========================================================================== */
 .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px; /* Leaves clean breathing space between logo and text */
+    gap: 12px;
 }
 
 .nav-logo {
-    height: 140px; /* Your exact requested desktop layout size display height rule */
-    width: auto;
-    object-fit: contain;
+    height: 140px !important; /* Your exact requested full 140px desktop size display constraint */
+    width: auto !important;
+    object-fit: contain !important;
     border-radius: 4px;
     transition: max-height 0.2s ease;
 }
 
-/* Specific inner override constraint loop targeting phone sizes */
 @media (max-width: 768px) {
     .nav-logo {
-        max-height: 55px; /* Dynamically caps your image height asset ONLY on iPhone viewport frames */
+        max-height: 55px !important; /* Safely downsizes image footprint asset inside mobile displays */
     }
 }
