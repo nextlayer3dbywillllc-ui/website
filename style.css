@@ -212,3 +212,32 @@ input[type="email"], input[type="text"] {
         background: #e0a800 !important;
         color: black !important;
     }
+/* ==========================================================================
+   8. IPHONE & MOBILE RESPONSIVE LAYOUT
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Changes side-by-side view to a stacked top-to-bottom view */
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    /* Changes your product grid from 3 columns to 1 column so images are large */
+    .products {
+        grid-template-columns: repeat(1, 1fr);
+        order: 2; /* Puts products below the cart on mobile */
+    }
+
+    /* Keeps your shopping cart fixed to the top of the phone screen while scrolling */
+    .cart-sidebar {
+        width: 100%;
+        box-sizing: border-box;
+        position: static;
+        margin-bottom: 20px;
+        order: 1; /* Puts the cart on top so customers can see what they add */
+    }
+
+    header h1 {
+        font-size: 1.6rem; /* Shrinks the text slightly so your business name doesn't clip */
+    }
+}
