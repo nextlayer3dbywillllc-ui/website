@@ -17,11 +17,12 @@
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* MAGIC LINE: Automatically forces logo to the left and cart to the right */
     align-items: center;
+    width: 100%; /* Spreads the flex layout across the entire navbar width */
     max-width: 1400px;
     margin: 0 auto;
-    position: relative; /* Visual anchor point for positioning the dropdown box */
+    position: relative; /* Keeps the dropdown cart positioned correctly underneath the button */
 }
 
 .logo-text {
