@@ -1,6 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Layer Printing by Will LLC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
     <!-- FLOATING NAV BAR WITH DROPDOWN TOGGLE BUTTON -->
@@ -32,6 +37,7 @@
 
                 <!-- WEB3FORMS CHECKOUT FORM -->
                 <form action="https://web3forms.com" method="POST" id="order-form">
+                    <!-- Replace value below with your actual Web3Forms access key -->
                     <input type="hidden" name="access_key" value="YOUR_FORM_ENDPOINT_HERE">
                     
                     <label for="name">Your Name:</label>
@@ -48,10 +54,7 @@
         </div>
     </nav>
 
-    <header>
-        <h1>NEXTLAYER3DBYWILL</h1>
-        <!--  <p>Custom 3D Printed Creations</p>  -->
-    </header>
+    <!-- HEADER BLOCK REMOVED PER REQ TO STREAMLINE VISUAL LAYOUT -->
 
     <main class="page-main-container">
         <!-- 20-ITEM PRODUCT CATALOG -->
@@ -183,7 +186,6 @@
     <script>
         let cart = [];
 
-        // JavaScript trigger to reveal or slide away the navigation menu dropdown box
         function toggleCartDropdown() {
             const dropdown = document.getElementById('cart-dropdown');
             dropdown.classList.toggle('show-dropdown');
@@ -192,9 +194,9 @@
         function addToCart(name, price) {
             cart.push({ name, price });
             updateCartUI();
-            
         }
 
+        /* REPAIRED AND LINKED REMOVAL LOGIC CHAIN CHAIN */
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartUI();
@@ -233,7 +235,7 @@
                 removeBtn.innerHTML = '&times;';
                 removeBtn.className = 'remove-item-btn';
                 removeBtn.onclick = (e) => {
-                    e.stopPropagation(); // Stops dropdown window from closing on click
+                    e.stopPropagation(); 
                     removeFromCart(index);
                 };
                 
@@ -248,9 +250,8 @@
                 orderSummaryText += `- ${item.name} ($${item.price.toFixed(2)})\n`;
             });
 
-            // Update DOM element nodes calculations
             totalSpan.textContent = total.toFixed(2);
-            countSpan.textContent = cart.length; // Live tracking badge updater
+            countSpan.textContent = cart.length; 
             hiddenInput.value = `New Order from Next Layer Printing!\n\nItems Ordered:\n${orderSummaryText}\nGrand Total: $${total.toFixed(2)}`;
         }
     </script>

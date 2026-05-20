@@ -30,23 +30,6 @@
     letter-spacing: 1px;
 }
 
-/* Header design position adjustments to clear space for the fixed bar top edge */
-
-    header h1 {
-        font-size: 2.2rem;
-        margin: 0 0 10px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    header p {
-        font-size: 1.1rem;
-        margin: 0;
-        font-weight: bold;
-        color: #ffc107;
-    }
-
 /* ==========================================================================
    2. DROPDOWN COMPONENT LAYOUT DESIGN
    ========================================================================== */
@@ -97,14 +80,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0 0 40px 0;
+    padding: 100px 0 40px 0; /* Shifted to 100px to push items cleanly out from under the navigation bar */
     background: #f9f9f9;
     color: #333;
 }
 
 .page-main-container {
     max-width: 1400px;
-    margin: 30px auto 0 auto;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
@@ -267,10 +250,6 @@ input[type="email"], input[type="text"] {
         width: calc(100vw - 40px); /* Perfectly boundaries matching phone displays edges */
         right: -10px;
     }
-
-    header h1 {
-        font-size: 1.6rem;
-    }
 }
 
 /* ==========================================================================
@@ -283,8 +262,8 @@ input[type="email"], input[type="text"] {
 }
 
 .nav-logo {
-    height: 140px; /* Restricts height to fit perfectly in the nav bar */
-    width: auto; /* Automatically balances width to prevent stretching */
+    height: 35px; /* Decreased from 140px down to 35px so the navbar stays slim and professional */
+    width: auto;
     object-fit: contain;
-    border-radius: 4px; /* Optional: gives sharp logos smooth rounded corners */
+    border-radius: 4px;
 }
