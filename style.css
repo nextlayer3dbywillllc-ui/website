@@ -50,7 +50,7 @@
 .cart-dropdown-box {
     display: none; /* Keeps container element entirely hidden by default rules */
     position: absolute;
-    top: 55px;
+    top: 155px; /* Shifted down to clear space below your full 140px branding icon */
     right: 0;
     width: 360px;
     background: white;
@@ -60,6 +60,7 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     color: #333;
     z-index: 1001;
+    box-sizing: border-box;
 }
 
 /* Class toggled on/off natively using the Javascript function rules */
@@ -80,7 +81,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 210px 0 40px 0; /* Shifted to 100px to push items cleanly out from under the navigation bar */
+    padding: 190px 0 40px 0; /* Clear room boundary to let your full 140px logo breathe safely */
     background: #f9f9f9;
     color: #333;
 }
@@ -238,9 +239,12 @@ input[type="email"], input[type="text"] {
    6. RESPONSIVE PHONE VIEW OPTIMIZATIONS
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Shaves down the navbar spacing on mobile so things fit */
+    body {
+        padding-top: 120px; /* Reduces page cushion padding space only on mobile */
+    }
+
     .navbar {
-        padding: 10px 15px;
+        padding: 8px 12px;
     }
 
     .page-main-container {
@@ -248,20 +252,20 @@ input[type="email"], input[type="text"] {
     }
 
     .products {
-        grid-template-columns: repeat(1, 1fr); /* 1 single simple card list on phones */
+        grid-template-columns: repeat(1, 1fr); /* 1 column grid layout on phone devices */
     }
 
-    /* FIXES ACCIDENTALLY OVERSIZED CART DROPDOWN SCREEN BOUNDARIES */
+    /* PREVENTS DROPDOWN CARD BLEEDING ACROSS MOBILE VIEWPORTS EDGE DISPLAY BOUNDS */
     .cart-dropdown-box {
-        width: 90vw; /* Keeps box inside 90% of the visible mobile screen screen edge width */
-        max-width: 340px; /* Locks it from ever expanding wider than safety bounds */
+        width: 290px;
+        max-width: calc(100vw - 24px);
+        top: 75px; /* Shakes dropdown box position block higher up dynamically */
         right: 0px;
-        box-sizing: border-box; /* Includes padding in width math to prevent bleeding */
+        padding: 15px;
     }
 
-    /* SHRINKS THE TEXT LOGO SIZE SO IT DOES NOT CRAMP THE MOBILE BAR */
     .logo-text {
-        font-size: 0.9rem; /* Prevents text overflow */
+        font-size: 0.75rem; /* Prevents button collision wraps */
         letter-spacing: 0px;
     }
 }
@@ -276,9 +280,16 @@ input[type="email"], input[type="text"] {
 }
 
 .nav-logo {
-    height: 140px; /* Maintained your exact requested desktop height sizing rule */
-    max-height: 55px; /* CRUCIAL: Automatically shrinks your big image asset ONLY on small mobile screens */
+    height: 140px; /* Your exact requested desktop layout size display height rule */
     width: auto;
     object-fit: contain;
     border-radius: 4px;
+    transition: max-height 0.2s ease;
+}
+
+/* Specific inner override constraint loop targeting phone sizes */
+@media (max-width: 768px) {
+    .nav-logo {
+        max-height: 55px; /* Dynamically caps your image height asset ONLY on iPhone viewport frames */
+    }
 }

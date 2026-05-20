@@ -54,8 +54,6 @@
         </div>
     </nav>
 
-    <!-- HEADER BLOCK REMOVED PER REQ TO STREAMLINE VISUAL LAYOUT -->
-
     <main class="page-main-container">
         <!-- 20-ITEM PRODUCT CATALOG -->
         <section class="products">
@@ -139,7 +137,7 @@
             </div>
             <div class="product">
                 <img src="https://placeholder.com" alt="3D Print">
-                <h2>3D Print 15</h2>
+                <h2>14. Collapsible Lightsaber</h2>
                 <p>$14.00</p>
                 <button onclick="addToCart('Collapsible Lightsaber', 14.00)">Add to Cart</button>
             </div>
@@ -196,7 +194,6 @@
             updateCartUI();
         }
 
-        /* REPAIRED AND LINKED REMOVAL LOGIC CHAIN CHAIN */
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartUI();
