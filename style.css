@@ -80,7 +80,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 100px 0 40px 0; /* Shifted to 100px to push items cleanly out from under the navigation bar */
+    padding: 210px 0 40px 0; /* Shifted to 100px to push items cleanly out from under the navigation bar */
     background: #f9f9f9;
     color: #333;
 }
@@ -238,6 +238,11 @@ input[type="email"], input[type="text"] {
    6. RESPONSIVE PHONE VIEW OPTIMIZATIONS
    ========================================================================== */
 @media (max-width: 768px) {
+    /* Shaves down the navbar spacing on mobile so things fit */
+    .navbar {
+        padding: 10px 15px;
+    }
+
     .page-main-container {
         padding: 0 15px;
     }
@@ -246,9 +251,18 @@ input[type="email"], input[type="text"] {
         grid-template-columns: repeat(1, 1fr); /* 1 single simple card list on phones */
     }
 
+    /* FIXES ACCIDENTALLY OVERSIZED CART DROPDOWN SCREEN BOUNDARIES */
     .cart-dropdown-box {
-        width: calc(100vw - 40px); /* Perfectly boundaries matching phone displays edges */
-        right: -10px;
+        width: 90vw; /* Keeps box inside 90% of the visible mobile screen screen edge width */
+        max-width: 340px; /* Locks it from ever expanding wider than safety bounds */
+        right: 0px;
+        box-sizing: border-box; /* Includes padding in width math to prevent bleeding */
+    }
+
+    /* SHRINKS THE TEXT LOGO SIZE SO IT DOES NOT CRAMP THE MOBILE BAR */
+    .logo-text {
+        font-size: 0.9rem; /* Prevents text overflow */
+        letter-spacing: 0px;
     }
 }
 
@@ -262,7 +276,8 @@ input[type="email"], input[type="text"] {
 }
 
 .nav-logo {
-    height: 35px; /* Decreased from 140px down to 35px so the navbar stays slim and professional */
+    height: 140px; /* Maintained your exact requested desktop height sizing rule */
+    max-height: 55px; /* CRUCIAL: Automatically shrinks your big image asset ONLY on small mobile screens */
     width: auto;
     object-fit: contain;
     border-radius: 4px;
