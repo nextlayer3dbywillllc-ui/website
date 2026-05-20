@@ -96,9 +96,9 @@
             </div>
             <div class="product">
                 <img src="https://placeholder.com" alt="3D Print">
-                <h2>3D Print 14</h2>
+                <h2>14. Collapsible Lightsaber</h2>
                 <p>$14.00</p>
-                <button onclick="addToCart('3D Print 14', 14.00)">Add to Cart</button>
+                <button onclick="addToCart('Collapsible Lightsaber', 14.00)">Add to Cart</button>
             </div>
             <div class="product">
                 <img src="https://placeholder.com" alt="3D Print">
@@ -150,6 +150,9 @@
                 <span>$<span id="cart-total">0.00</span></span>
             </div>
 
+            <!-- 1. ADDED HTML BUTTON TO CLEAR THE CART -->
+            <button onclick="clearCart()" class="clear-btn" style="background: #dc3545; color: white; margin-bottom: 15px; width: 100%; border: none; padding: 10px; font-weight: bold; border-radius: 4px; cursor: pointer;">Clear Cart</button>
+
             <!-- MANUAL CHECKOUT INBOX FORM -->
             <form action="https://web3forms.com" method="POST" id="order-form">
                 <!-- Replace value below with your actual Web3Forms access key -->
@@ -176,6 +179,12 @@
         function addToCart(name, price) {
             cart.push({ name, price });
             updateCartUI();
+        }
+
+        /* 2. ADDED JAVASCRIPT FUNCTION TO EMPTY ARRAYS */
+        function clearCart() {
+            cart = []; // Resets memory back to zero items
+            updateCartUI(); // Redraws the side screen block cleanly
         }
 
         function updateCartUI() {

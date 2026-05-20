@@ -1,4 +1,6 @@
-/* Your new fun and energetic header styles */
+/* ==========================================================================
+   1. FUN & ENERGETIC HEADER STYLES
+   ========================================================================== */
 header {
     background: linear-gradient(135deg, #007bff, #7a22ff); /* Electric blue to vibrant violet */
     color: white;
@@ -23,7 +25,9 @@ header {
         color: #ffc107; /* Matching energetic accent color for your slogan text */
     }
 
-/* Base layouts and typography */
+/* ==========================================================================
+   2. BASE LAYOUTS AND TYPOGRAPHY
+   ========================================================================== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -40,7 +44,9 @@ body {
     margin: 30px auto 0 auto;
 }
 
-/* 20-Item Product Grid system - Fixed to 3 items per row */
+/* ==========================================================================
+   3. 20-ITEM PRODUCT GRID SYSTEM (3 ITEMS PER ROW)
+   ========================================================================== */
 .products {
     flex: 3;
     display: grid;
@@ -74,7 +80,9 @@ body {
         margin: 5px 0 15px;
     }
 
-/* Interactive buttons */
+/* ==========================================================================
+   4. CATALOG INTERACTIVE ADD BUTTONS
+   ========================================================================== */
 button {
     background: #28a745;
     color: white;
@@ -90,7 +98,9 @@ button {
         background: #218838;
     }
 
-/* Sticky cart sidebar UI */
+/* ==========================================================================
+   5. STICKY CART SIDEBAR UI
+   ========================================================================== */
 .cart-sidebar {
     flex: 1;
     min-width: 300px;
@@ -136,7 +146,9 @@ button {
     border-top: 2px solid #eee;
 }
 
-/* Form inputs and submission styling */
+/* ==========================================================================
+   6. FORM INPUTS AND SUBMISSION STYLING
+   ========================================================================== */
 input[type="email"], input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -161,17 +173,25 @@ input[type="email"], input[type="text"] {
         background: #0056b3;
     }
 
-/* Red styling for the Clear Cart button layout */
+/* ==========================================================================
+   7. UTILITY BUTTON OVERRIDES (CLEAR CART & LIST REMOVAL LINKS)
+   ========================================================================== */
 .clear-btn {
-    background: #dc3545 !important;
-    margin-bottom: 20px;
+    background-color: #dc3545 !important; /* Forces background to stay vibrant red */
+    color: white !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+    padding: 10px !important;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
     .clear-btn:hover {
-        background: #bd2130 !important;
+        background-color: #bd2130 !important; /* Darker red on hover mouse action */
     }
 
-/* Styling for the small circular 'X' buttons next to list items */
 .remove-item-btn {
     background: #ffc107 !important;
     color: #333 !important;
