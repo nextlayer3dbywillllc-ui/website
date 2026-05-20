@@ -1,20 +1,65 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Layer Printing by Will LLC</title>
+    <title>NEXTLAYER3DBYWILL</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- FLOATING NAV BAR WITH DROPDOWN TOGGLE BUTTON -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="logo-wrapper">    
+                <img src="logo.jpg" alt="Next Layer Printing Logo" class="nav-logo">
+                <span class="logo-text">Next Layer Printing</span>
+            </div>
+            
+            <button class="cart-toggle-btn" onclick="toggleCartDropdown()">
+                🛒 Cart (<span id="cart-count">0</span>)
+            </button>
+            
+            <!-- THE DROPDOWN CART BOX -->
+            <div id="cart-dropdown" class="cart-dropdown-box">
+                <h2>Your Cart</h2>
+                <ul id="cart-items">
+                    <!-- Dynamic cart items inject here -->
+                </ul>
+                
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span>$<span id="cart-total">0.00</span></span>
+                </div>
+
+                <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
+
+                <!-- WEB3FORMS CHECKOUT FORM -->
+                <form action="https://web3forms.com" method="POST" id="order-form">
+                    <input type="hidden" name="access_key" value="YOUR_FORM_ENDPOINT_HERE">
+                    
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="Customer Name" required>
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="Customer Email" required>
+
+                    <textarea name="Order Details" id="hidden-order-data" style="display: none;"></textarea>
+
+                    <button type="submit" class="submit-btn" style="margin-top: 10px;">Submit Order via Email</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
     <header>
         <h1>Next Layer Printing by Will LLC</h1>
         <p>Custom 3D Printed Creations</p>
     </header>
 
-    <div class="container">
-        <!-- 20-ITEM PRODUCT CATALOG - NAMES ARE "3D PRINT 1-20" -->
+    <main class="page-main-container">
+        <!-- 20-ITEM PRODUCT CATALOG -->
         <section class="products">
             <div class="product">
                 <img src="https://placeholder.com" alt="3D Print">
@@ -137,47 +182,29 @@
                 <button onclick="addToCart('3D Print 20', 20.00)">Add to Cart</button>
             </div>
         </section>
+    </main>
 
-        <!-- SIDEBAR INTERACTIVE SHOPPING CART -->
-        <aside class="cart-sidebar">
-            <h2>Your Cart</h2>
-            <ul id="cart-items">
-                <!-- Appended cart items inject here dynamically -->
-            </ul>
-            
-            <div class="cart-total">
-                <span>Total:</span>
-                <span>$<span id="cart-total">0.00</span></span>
-            </div>
-
-            <!-- CLEAR CART BUTTON -->
-            <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
-
-            <!-- MANUAL CHECKOUT INBOX FORM -->
-            <form action="https://web3forms.com" method="POST" id="order-form">
-                <!-- Replace value below with your actual Web3Forms access key -->
-                <input type="hidden" name="access_key" value="YOUR_FORM_ENDPOINT_HERE">
-                
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="Customer Name" required>
-
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="Customer Email" required>
-
-                <!-- Dynamic text injection field for delivery to your email -->
-                <textarea name="Order Details" id="hidden-order-data" style="display: none;"></textarea>
-
-                <button type="submit" class="submit-btn">Submit Order via Email</button>
-            </form>
-        </aside>
-    </div>
-
-    <!-- APPENDING CART JAVASCRIPT LOGIC -->
+    <!-- INTERACTIVE SCRIPT LOGIC -->
     <script>
         let cart = [];
 
+        // JavaScript trigger to reveal or slide away the navigation menu dropdown box
+        function toggleCartDropdown() {
+            const dropdown = document.getElementById('cart-dropdown');
+            dropdown.classList.toggle('show-dropdown');
+        }
+
         function addToCart(name, price) {
             cart.push({ name, price });
+            updateCartUI();
+            
+            // Proactive UX touch: automatically slide open the dropdown menu box when an item is added
+            const dropdown = document.getElementById('cart-dropdown');
+            dropdown.classList.add('show-dropdown');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
             updateCartUI();
         }
 
@@ -186,29 +213,22 @@
             updateCartUI();
         }
 
-        /* NEW FUNCTION: Removes exactly one item from the memory array */
-        function removeFromCart(index) {
-            cart.splice(index, 1); // Removes the item at the specific position
-            updateCartUI(); // Redraws the cart list with the updated math
-        }
-
         function updateCartUI() {
             const list = document.getElementById('cart-items');
             const totalSpan = document.getElementById('cart-total');
+            const countSpan = document.getElementById('cart-count');
             const hiddenInput = document.getElementById('hidden-order-data');
             
             list.innerHTML = '';
             let total = 0;
             let orderSummaryText = '';
 
-            /* UPDATED LOOP: Keeps track of each item's position index */
             cart.forEach((item, index) => {
                 const li = document.createElement('li');
                 
                 const nameSpan = document.createElement('span');
                 nameSpan.textContent = item.name;
                 
-                // Group to align price and delete button side-by-side
                 const rightGroup = document.createElement('div');
                 rightGroup.style.display = 'flex';
                 rightGroup.style.alignItems = 'center';
@@ -217,11 +237,13 @@
                 const priceSpan = document.createElement('span');
                 priceSpan.textContent = `$${item.price.toFixed(2)}`;
                 
-                /* NEW COMPONENT: Small individual yellow "X" removal button */
                 const removeBtn = document.createElement('button');
-                removeBtn.innerHTML = '&times;'; // Visual code for an "X" multiplication symbol
+                removeBtn.innerHTML = '&times;';
                 removeBtn.className = 'remove-item-btn';
-                removeBtn.onclick = () => removeFromCart(index); // Targets this specific item index
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation(); // Stops dropdown window from closing on click
+                    removeFromCart(index);
+                };
                 
                 rightGroup.appendChild(priceSpan);
                 rightGroup.appendChild(removeBtn);
@@ -234,7 +256,9 @@
                 orderSummaryText += `- ${item.name} ($${item.price.toFixed(2)})\n`;
             });
 
+            // Update DOM element nodes calculations
             totalSpan.textContent = total.toFixed(2);
+            countSpan.textContent = cart.length; // Live tracking badge updater
             hiddenInput.value = `New Order from Next Layer Printing!\n\nItems Ordered:\n${orderSummaryText}\nGrand Total: $${total.toFixed(2)}`;
         }
     </script>
