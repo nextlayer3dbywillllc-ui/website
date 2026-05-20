@@ -23,11 +23,11 @@ body {
     margin: 30px auto 0 auto;
 }
 
-/* 20-Item Product Grid system */
+/* 20-Item Product Grid system - Fixed to 3 items per row */
 .products {
     flex: 3;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Forces exactly 3 items per row */
     gap: 20px;
 }
 
