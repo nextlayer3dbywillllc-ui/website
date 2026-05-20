@@ -30,6 +30,23 @@
     letter-spacing: 1px;
 }
 
+/* Header design position adjustments to clear space for the fixed bar top edge */
+
+    header h1 {
+        font-size: 2.2rem;
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    header p {
+        font-size: 1.1rem;
+        margin: 0;
+        font-weight: bold;
+        color: #ffc107;
+    }
+
 /* ==========================================================================
    2. DROPDOWN COMPONENT LAYOUT DESIGN
    ========================================================================== */
